@@ -11,7 +11,7 @@ To Pointers:
 ```go
 stringPointer := qogi.ToPointer("abcd123456")
 
-uintPointer := qogi.ToPointer(unit(123456))
+uintPointer := qogi.ToPointer(uint(123456))
 
 ...
 ```

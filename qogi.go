@@ -83,7 +83,7 @@ func ToTimeRFC3339(timeRFC3339 string) time.Time {
 	return parsedTime
 }
 
-// ToPointer returns a pointer for the given argument
-func ToPointer[T interface{}](x T) *T {
+// ToPointer returns the pointer for the given argument (even if x is already a pointer)
+func ToPointer[T any](x T) *T {
 	return &x
 }

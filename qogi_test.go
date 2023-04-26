@@ -161,11 +161,33 @@ func Test_ToPointerWithUint(t *testing.T) {
 	g.Expect(*uintPointer).Should(BeIdenticalTo(uint(123456)))
 }
 
-func Test_ToPointerWith(t *testing.T) {
+func Test_ToPointerWithString(t *testing.T) {
 	g := NewWithT(t)
 
 	stringPointer := ToPointer("abcd123456")
 
 	g.Expect(stringPointer).ShouldNot(BeNil())
 	g.Expect(*stringPointer).Should(BeIdenticalTo("abcd123456"))
+}
+
+func Test_ToPointerWithNilPointer(t *testing.T) {
+	g := NewWithT(t)
+
+	var nilPointer *string = nil
+
+	stringPointer := ToPointer(nilPointer)
+
+	g.Expect(*stringPointer).Should(BeNil())
+}
+
+func Test_ToPointerWithPointer(t *testing.T) {
+	g := NewWithT(t)
+
+	str := "abcd"
+	nilPointer := str
+
+	stringPointer := ToPointer(&nilPointer)
+
+	g.Expect(stringPointer).ShouldNot(BeNil())
+	g.Expect(stringPointer).Should(HaveValue(BeEquivalentTo("abcd")))
 }

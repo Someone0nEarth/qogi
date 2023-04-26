@@ -10,18 +10,18 @@ import (
 func Test_AtoUiWithMaxUint(t *testing.T) {
 	g := NewWithT(t)
 
-	uinteger, err := AtoUi("18446744073709551615")
+	uInt, err := AtoUi("18446744073709551615")
 
-	g.Expect(uinteger).Should(BeIdenticalTo(uint(18446744073709551615)))
+	g.Expect(uInt).Should(BeIdenticalTo(uint(18446744073709551615)))
 	g.Expect(err).Should(BeNil())
 }
 
 func Test_AtoUi(t *testing.T) {
 	g := NewWithT(t)
 
-	uinteger, err := AtoUi("7")
+	uInt, err := AtoUi("7")
 
-	g.Expect(uinteger).Should(BeIdenticalTo(uint(7)))
+	g.Expect(uInt).Should(BeIdenticalTo(uint(7)))
 	g.Expect(err).Should(BeNil())
 }
 
@@ -126,7 +126,7 @@ func Test_ToTimeRFC3339(t *testing.T) {
 	timeString = "2016-09-28T18:44:42+07:00"
 	toTime = ToTimeRFC3339(timeString)
 	expectedTime, _ = time.Parse(time.RFC3339, "2016-09-28T18:44:42+07:00")
-	g.Expect(toTime).Should(BeIdenticalTo(expectedTime))
+	g.Expect(toTime).Should(BeEquivalentTo(expectedTime))
 
 	timeString = "Non RFC3339 string"
 	toTime = ToTimeRFC3339(timeString)

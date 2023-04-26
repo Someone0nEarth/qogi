@@ -27,3 +27,9 @@ linters:
     - unconvert
     - unparam
     - whitespace
+
+linters-settings:
+  revive:
+    rules:
+      - name: var-naming
+        arguments: [["UI"],[""]]
